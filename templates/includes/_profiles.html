@@ -1,0 +1,51 @@
+{% block body %}
+{% if profile %}
+    <div id="profile">
+        <div class="card card-body mb-3">
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid mb-2" src="{{profile.avatar_url}}">
+                    <a href="{{profile.html_url}}" target="_blank" class="btn btn-success btn-block mb-4">View
+                        profile</a>
+                </div>
+                <div class="col-md-9">
+                    <span class="badge badge-success">Number of Repos: {{profile.public_repos}} </span>
+                    <span class="badge badge-primary">Followers: {{profile.followers}} </span>
+                    <span class="badge badge-info">Followed by: {{profile.following}}</span>
+                    <br><br>
+                    <ul class="list-group">
+                        <li class="list-group-item">Company: {{profile.company}}</li>
+                        <li class="list-group-item">Website: {{profile.blog}}</li>
+                        <li class="list-group-item">Location: {{profile.location}}</li>
+                        <li class="list-group-item">Member since: {{profile.created_at}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <h3 class="page-heading mb-3">User Repositories</h3>
+        <div id="repos">
+            {% for repo in repos %}
+            <div class="card card-body mb-2">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span>{{repo.name}}&nbsp;&nbsp;</span>
+                        <a href="{{repo.html_url}}" target="_blank" class="btn-sm btn-success">View repo</a>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="badge badge-success">Starred: {{repo.stargazers_count}} </span>
+                        <span class="badge badge-primary">Watching: {{repo.watchers}}</span>
+                        <span class="badge badge-info">Forks: {{repo.forks}}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% else %}
+    {% if error %}
+    <div class="alert alert-danger my-3">
+        {{error}}
+    </div>
+    {% endif %}
+{% endif %}
+{% endblock %}
