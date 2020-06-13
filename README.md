@@ -1,1 +1,3 @@
-Github Finder Project with using Flask Framework, Github Rest Api and Python
+# Python Flask GitHub API Demo
+
+A simple one-page web app using the Python Flask Microframework to interact with GitHub through the GitHub API.
